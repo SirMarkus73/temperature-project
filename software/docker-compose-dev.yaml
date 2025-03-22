@@ -8,18 +8,12 @@ services:
     develop:
       watch:
         - action: sync
-          path: ./backend
-          target: /app
+          path: ./backend/app
+          target: /app/app
   db:
     image: postgres:17.4-bookworm
     env_file:
-      - path: "./backend/.env"
-        required: true
-    environment:
-      - POSTGRES_USER
-      - POSTGRES_PASSWORD
-      - POSTGRES_DB
-  
+      - ./backend/.env
     ports:
       - "5433:5432"
     volumes:
