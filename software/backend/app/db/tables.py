@@ -11,14 +11,16 @@ def create_init_tables():
         CREATE TABLE IF NOT EXISTS temperature (
             id SERIAL,
             temperature FLOAT,
-            CONSTRAINT pk_temperature PRIMARY KEY (id)
+            CONSTRAINT pk_temperature PRIMARY KEY (id),
+            saved_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
         );
         """,
         """
         CREATE TABLE IF NOT EXISTS humidity(
             id SERIAL,
             humidity FLOAT,
-            CONSTRAINT pk_humidity PRIMARY KEY (humidity)
+            CONSTRAINT pk_humidity PRIMARY KEY (humidity),
+            saved_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
         );
         """,
     ]
