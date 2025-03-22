@@ -1,0 +1,30 @@
+## -- Install uv and download dependencies -- ##
+FROM python:3.12-slim AS builder
+
+# Install uv.
+COPY --from=ghcr.io/astral-sh/uv:latest /uv /uvx /bin/
+
+WORKDIR /app
+
+COPY pyproject.toml .
+COPY uv.lock .
+
+# Install the application dependencies.
+RUN uv sync --frozen --no-cache
+
+## -- Build the application -- ##
+FROM python:3.12-slim-bookworm AS runner
+WORKDIR /app
+
+# Copy the application into the container.
+COPY src src
+
+# Copy the dependencies into the container.
+COPY --from=builder /app/.venv .venv
+
+# Run the application.
+EXPOSE 8080
+CMD [".venv/bin/fastapi", "run", "src/main.py", "--port", "8080", "--host", "0.0.0.0"]
+
+# setup loop for debugging
+# CMD ["python", "-c", "while True: pass"]
