@@ -1,5 +1,5 @@
 ## -- Install uv and download dependencies -- ##
-FROM python:3.12-slim AS builder
+FROM python:3.12-bookworm AS builder
 
 # Install uv.
 COPY --from=ghcr.io/astral-sh/uv:latest /uv /uvx /bin/
@@ -18,6 +18,7 @@ WORKDIR /app
 
 # Copy the application into the container.
 COPY src src
+COPY .env .
 
 # Copy the dependencies into the container.
 COPY --from=builder /app/.venv .venv
