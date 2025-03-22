@@ -4,19 +4,22 @@ from random import uniform
 
 from fastapi import FastAPI
 
+from .db.tables import create_init_tables
+
 app = FastAPI()
+create_init_tables()
 
 
 @app.get("/")
 def read_root():
     """Read the root path."""
-    return {"a": True}
+    return {"Ok": True}
 
 
 @app.get("/temperature")
 def get_temperature():
     """Get a random temperature (in the future from db)."""
-    return {"temperature": uniform(15, 32)}
+    return {"temperature": round(uniform(15, 32), 2)}
 
 
 @app.post("/temperature")
@@ -28,7 +31,7 @@ def post_temperature(temperature: float):
 @app.get("/humidity")
 def get_humidity():
     """Get a random humidity (in the future from db)."""
-    return {"humidity": uniform(40, 80)}
+    return {"humidity": round(uniform(40, 80), 2)}
 
 
 @app.post("/humidity")
