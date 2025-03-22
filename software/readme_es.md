@@ -1,4 +1,4 @@
-# Implementación del frontend
+# Implementación del software
 
 [EN](readme.md)
 
