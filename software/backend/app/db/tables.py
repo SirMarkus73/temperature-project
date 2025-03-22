@@ -1,7 +1,7 @@
 """Module for defining the database tables."""
 
-from ..utils.loadenv import env
-from . import db
+from app.db import db
+from app.utils.loadenv import env
 
 
 def create_init_tables():

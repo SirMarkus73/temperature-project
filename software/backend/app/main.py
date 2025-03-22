@@ -2,9 +2,8 @@
 
 from random import uniform
 
+from app.db.tables import create_init_tables
 from fastapi import FastAPI
-
-from .db.tables import create_init_tables
 
 app = FastAPI()
 create_init_tables()
