@@ -19,6 +19,7 @@ Ejecuta el siguiente comando desde /software
 
 > [!NOTE]
 > Esto ejecutara el backend y el frontend, si solo quieres ejecutar el backend especifica después de la palabra up `backend`
+>
 > Ejemplo: `docker compose -f docker-compose.yaml up backend -d`
 
 #### Desarrollo
