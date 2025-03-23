@@ -1,8 +1,11 @@
 """Main module of the FastAPI application."""
 
-from random import uniform
-
+# App dependencies
 from app.db.tables import create_init_tables
+from app.routes.humidity import humidity_router
+from app.routes.temperature import temperature_router
+
+# FastAPI dependencies
 from fastapi import FastAPI
 
 app = FastAPI()
@@ -15,25 +18,5 @@ def read_root():
     return {"Ok": True}
 
 
-@app.get("/temperature")
-def get_temperature():
-    """Get a random temperature (in the future from db)."""
-    return {"temperature": round(uniform(15, 32), 2)}
-
-
-@app.post("/temperature")
-def post_temperature(temperature: float):
-    """Post a temperature (in the future it will go to db)."""
-    return {"temperature": temperature}
-
-
-@app.get("/humidity")
-def get_humidity():
-    """Get a random humidity (in the future from db)."""
-    return {"humidity": round(uniform(40, 80), 2)}
-
-
-@app.post("/humidity")
-def post_humidity(humidity: float):
-    """Post a humidity (in the future it will go to db)."""
-    return {"humidity": humidity}
+app.include_router(temperature_router)
+app.include_router(humidity_router)
