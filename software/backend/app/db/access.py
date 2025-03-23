@@ -14,6 +14,8 @@ class Temperature:
     class Model(BaseModel):
         """Temperature model."""
 
+        model_config = {"extra": "forbid", "title": "Temperature Model"}
+
         id: int
         temperature: Annotated[
             float, Query(description="Temperature in Celsius", gt=-30, lt=60)
@@ -54,6 +56,8 @@ class Humidity:
 
     class Model(BaseModel):
         """Humidity model."""
+
+        model_config = {"extra": "forbid", "title": "Humidity Model"}
 
         id: int
         humidity: Annotated[
