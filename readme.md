@@ -19,16 +19,16 @@ This project consists of an ESP32 microcontroller that reads temperature data an
 2. Flash the ESP32 with the provided firmware to enable it to read temperature data and send it to the API.
 
 
-> [!NOTE]
+> [!WARNING]
 > The firmware is under development (it is not yet stable enough for production)
 
 
 ### 2. Running the API
-> [!NOTE]
+> [!WARNING]
 > This is not created yet
 
 ### 3. Running the Frontend
-> [!NOTE]
+> [!WARNING]
 > This is not created yet
 
 ### 4. Viewing Temperature Data
