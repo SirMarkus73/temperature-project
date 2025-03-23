@@ -12,7 +12,7 @@ def create_init_tables():
             id SERIAL,
             temperature FLOAT,
             CONSTRAINT pk_temperature PRIMARY KEY (id),
-            saved_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+            saved_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
         );
         """,
         """
@@ -20,7 +20,7 @@ def create_init_tables():
             id SERIAL,
             humidity FLOAT,
             CONSTRAINT pk_humidity PRIMARY KEY (humidity),
-            saved_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+            saved_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
         );
         """,
     ]

@@ -1,19 +1,22 @@
 """Temperature routes."""
 
-from random import uniform
+from datetime import datetime
 
+from app.db.access import Temperature
 from fastapi import APIRouter
 
 temperature_router = APIRouter(tags=["temperature"], prefix="/temperature")
 
 
 @temperature_router.get("/")
-def get_temperature():
-    """Get a random temperature (in the future from db)."""
-    return {"temperature": round(uniform(15, 32), 2)}
+def get_temperature() -> list[Temperature.Model]:
+    """Get all temperatures from db."""
+    temperatures = list(Temperature.get_all())
+    return temperatures
 
 
 @temperature_router.post("/temperature")
-def post_temperature(temperature: float):
+def post_temperature(temperature: float) -> Temperature.Model:
     """Post a temperature (in the future it will go to db)."""
-    return {"temperature": temperature}
+    temperature_inserted = Temperature.insert(temperature)
+    return temperature_inserted

@@ -1,10 +1,14 @@
 """Database utilities."""
 
 import psycopg2 as pg
+from app.utils.loadenv import env
 
 
 def get_db_connection(
-    host: str, database: str, user: str, password: str
+    host: str = "db",
+    database: str = env["POSTGRES_DB"],
+    user: str = env["POSTGRES_USER"],
+    password: str = env["POSTGRES_PASSWORD"],
 ) -> pg.extensions.connection:
     """Get a database connection."""
     return pg.connect(host=host, database=database, user=user, password=password)
