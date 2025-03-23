@@ -1,7 +1,5 @@
 """Temperature routes."""
 
-from datetime import datetime
-
 from app.db.access import Temperature
 from fastapi import APIRouter
 
@@ -17,6 +15,6 @@ def get_temperature() -> list[Temperature.Model]:
 
 @temperature_router.post("/temperature")
 def post_temperature(temperature: float) -> Temperature.Model:
-    """Post a temperature (in the future it will go to db)."""
+    """Post a temperature to the db."""
     temperature_inserted = Temperature.insert(temperature)
     return temperature_inserted
